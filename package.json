@@ -5,9 +5,10 @@
   "main": "gulpfile.js",
   "scripts": {
     "dev": "gulp",
+    "clean": "gulp clean:build",
     "build": "gulp build",
     "release": "gulp release",
-    "predeploy": "npm run build",
+    "predeploy": "npm run clean && npm run build",
     "deploy": "gh-pages -d dist"
   },
   "repository": {

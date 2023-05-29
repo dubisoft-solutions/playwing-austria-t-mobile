@@ -37,13 +37,7 @@ var path = {
     }
 };
 
-/* Web server config */
-var config = {
-    server: {
-        baseDir: "./dist",
-    },
-    notify: false,
-};
+const conf = require('./conf.json');
 
 /* Gulp config */
 const sass = require('gulp-sass')(require('sass'));
@@ -61,7 +55,9 @@ const gulp = require("gulp"),
       iconfontCss = require('gulp-iconfont-css'),
       rename = require("gulp-rename"),
       rtlcss = require('gulp-rtlcss'),
-      zip = require('gulp-zip');
+      zip = require('gulp-zip'),
+      replace = require('gulp-replace'),
+      gulpEach = require ( 'gulp-each' );
 
 /* Main tasks */
 
@@ -69,7 +65,7 @@ const gulp = require("gulp"),
  * Start a web server
  */
 gulp.task("webserver", function() {
-    webserver(config);
+    webserver(conf.webServerConf);
 });
 
 /**
@@ -82,6 +78,27 @@ gulp.task("html:build", function() {
         .pipe(rigger())
         .pipe(gulp.dest(path.build.html))
         .pipe(webserver.reload({ stream: true }));
+});
+
+/**
+ * Replace system blocks, like footerBlock in the dest html
+ */
+gulp.task("replace:sys-blocks", function() {
+    return gulp.src(path.build.html + "*")
+        .pipe (gulpEach (function(content, file, callback ) {
+            let updatedContent = content;
+
+            conf.devReplacements.forEach ((item) => {
+                let textPos = updatedContent.search (item.name);
+
+                while (textPos >= 0) {
+                    updatedContent = updatedContent.replace ( item.name, item.value);
+                    textPos = updatedContent.search (item.name);
+                }
+            } )
+            callback ( null, updatedContent );
+        }))
+        .pipe(gulp.dest(path.build.html));
 });
 
 /**
@@ -228,7 +245,7 @@ gulp.task(
  * Watch task
  */
 gulp.task("watch", function() {
-    gulp.watch(path.watch.html, gulp.series("html:build"));
+    gulp.watch(path.watch.html, gulp.series("html:build", "replace:sys-blocks"));
     gulp.watch(path.watch.css, gulp.series("css:build"));
     gulp.watch(path.watch.js, gulp.series("js:build"));
     gulp.watch(path.watch.img, gulp.series("image:build"));
@@ -246,9 +263,9 @@ gulp.task("zip", function() {
 /**
  * Creates the release archive
  */
-gulp.task("release", gulp.series("build", "zip"));
+gulp.task("release", gulp.series("clean:build", "build", "zip"));
 
 /**
  * Default task
  */
-gulp.task("default", gulp.series("build", gulp.parallel("webserver", "watch")));
+gulp.task("default", gulp.series("build", "replace:sys-blocks", gulp.parallel("webserver", "watch")));

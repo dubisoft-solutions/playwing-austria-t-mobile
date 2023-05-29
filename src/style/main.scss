@@ -20,6 +20,10 @@ body {
             height: 100%;
             position: absolute;
             top: 0;
+            object-fit: cover;
+            @media (min-width: 414px) {
+                object-fit: contain;
+            }
         }
         .banner-shadow {
             background: linear-gradient(359.98deg, #181B23 14.72%, rgba(24, 27, 35, 0.57) 55.54%, rgba(24, 27, 35, 0) 92.63%);
@@ -28,6 +32,7 @@ body {
             position: absolute;
             bottom: 0;
             .banner-logo {
+                height: .75rem;
                 position: absolute;
                 bottom: 0;
                 left: 50%;

@@ -1,10 +1,8 @@
-### Mind plus t-mobile Markup project ###
+### Playwing activity Austria T Mobile ###
 
 Markup project created by figma design.
 
-Demo link [url](https://dubisoft-solutions.github.io/mind-plus-t-mobile/ "Demo project link")
-
-RTL version: [url](https://dubisoft-solutions.github.io/mind-plus-t-mobile/?rtl=true "Demo rtl project link")
+Demo link [url](https://dubisoft-solutions.github.io/playwing-austria-t-mobile/ "Demo project link")
 
 ## Project structure ##
 
@@ -33,4 +31,8 @@ Active it
 ### How to build the assets? ###
 
     npm run build
+
+### How to create an activity zip archive ###
+
+    npm run release
 

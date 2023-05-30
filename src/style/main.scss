@@ -14,10 +14,7 @@ body {
     min-height: 88vh;
     .banner {
         position: relative;
-        height: 350px;
-        @media (min-width: 414px) {
-            height: 100vw;
-        }
+        height: 100vw;
         @media (min-width: 576px) {
             height: 98vw;
         }

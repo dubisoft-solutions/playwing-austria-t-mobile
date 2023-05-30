@@ -176,17 +176,17 @@ body {
 }
 @media (min-width: 768px) {
   .main .banner {
-    height: 92vw;
+    height: 740px;
   }
 }
 @media (min-width: 992px) {
   .main .banner {
-    height: 45vw;
+    height: 480px;
   }
 }
-@media (min-width: 1500px) {
+@media (min-width: 1200px) {
   .main .banner {
-    height: 32vw;
+    height: 580px;
   }
 }
 .main .banner .banner-bg {

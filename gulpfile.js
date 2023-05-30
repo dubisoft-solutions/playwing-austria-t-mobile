@@ -32,7 +32,7 @@ var path = {
     },
     clean: "./dist/*",
     release: {
-        src: "./dist",
+        src: "./dist/*",
         target: "./release",
     }
 };

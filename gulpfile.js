@@ -30,9 +30,12 @@ var path = {
         fonts: "./srs/fonts/**/*.*",
         fontIcons: "./src/font_icons/icons/*.svg",
     },
-    clean: "./dist/*",
+    clean: ["./dist/*", "./release/*"],
     release: {
-        src: "./dist/*",
+        
+        src: "./dist/**/*",
+        themeFolder: './release/tmp/theme',
+        archiveSrc: './release/tmp/**/*',
         target: "./release",
     }
 };
@@ -56,7 +59,7 @@ const gulp = require("gulp"),
       rename = require("gulp-rename"),
       rtlcss = require('gulp-rtlcss'),
       zip = require('gulp-zip'),
-      replace = require('gulp-replace'),
+      chmod = require('gulp-chmod'),
       gulpEach = require ( 'gulp-each' );
 
 /* Main tasks */
@@ -253,12 +256,22 @@ gulp.task("watch", function() {
     gulp.watch(path.watch.fontIcons, gulp.series("fonticons:build"));
 });
 
-gulp.task("zip", function() {
+/**
+ * prepare tmp folder
+ */
+gulp.task("zip:tmp", function() {
     return gulp
         .src(path.release.src)
+        .pipe(gulp.dest(path.release.themeFolder))
+});
+
+gulp.task("zip", gulp.series('zip:tmp', function() {
+    return gulp
+        .src(path.release.archiveSrc)
+        .pipe(chmod(0o777, 0o777))
         .pipe(zip('template.zip'))
         .pipe(gulp.dest(path.release.target));
-})
+}))
 
 /**
  * Creates the release archive

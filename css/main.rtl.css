@@ -162,12 +162,7 @@ body {
 }
 .main .banner {
   position: relative;
-  height: 350px;
-}
-@media (min-width: 414px) {
-  .main .banner {
-    height: 100vw;
-  }
+  height: 100vw;
 }
 @media (min-width: 576px) {
   .main .banner {

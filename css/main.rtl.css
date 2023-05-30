@@ -35,7 +35,7 @@
   src: url("../fonts/IconsFont.eot");
   src: url("../fonts/IconsFont.eot?#iefix") format("eot"), url("../fonts/IconsFont.woff2") format("woff2"), url("../fonts/IconsFont.woff") format("woff"), url("../fonts/IconsFont.ttf") format("truetype"), url("../fonts/IconsFont.svg#IconsFont") format("svg");
 }
-.icon-plus:before, .icon-minus:before {
+.icon-plus:before {
   font-family: "IconsFont";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -46,12 +46,8 @@
   text-transform: none;
 }
 
-.icon-minus:before {
-  content: "\e001";
-}
-
 .icon-plus:before {
-  content: "\e002";
+  content: "\e001";
 }
 
 .btn {
@@ -83,13 +79,19 @@
   width: 100%;
 }
 
+body {
+  background-color: #181B23;
+  margin: 0;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 a {
   text-decoration: underline;
   cursor: pointer;
-}
-
-.container-fluid {
-  padding: 0;
 }
 
 .text-white {
@@ -100,20 +102,12 @@ a {
   color: #31C27D;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .fw-bold {
   font-weight: bold;
-}
-
-.d-flex {
-  display: flex;
-}
-
-.justify-content-center {
-  justify-content: center;
-}
-
-.align-items-center {
-  align-items: center;
 }
 
 .px-4 {
@@ -148,11 +142,6 @@ h1 {
 
 html {
   font-size: 16px;
-}
-
-body {
-  background-color: #181B23;
-  margin: 0;
 }
 
 .main {
@@ -215,6 +204,19 @@ body {
     height: 1.5rem;
   }
 }
+.main .hero .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .hero .wrapper .wrapper-item-left {
+  width: 200px;
+}
+.main .hero .wrapper .wrapper-item-right {
+  width: 100px;
+  display: flex;
+  text-align: start;
+}
 .main .footer {
   margin-top: auto;
 }
@@ -227,6 +229,7 @@ body {
   list-style-type: none;
   padding: 0 12px;
   border-left: 1px solid #464646;
+  padding-bottom: 0.25rem;
 }
 .main .footer .list-inline .list-inline-item .btn-link {
   font-weight: 400;

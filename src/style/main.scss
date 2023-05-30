@@ -32,6 +32,25 @@ html {
                 object-fit: contain;
             }
         }
+        .banner-circle {
+            background-image: url("../img/banner-circle.svg");
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            .banner-value {
+                font-weight: bold;
+                font-size: .625rem;
+                color: $white;
+                padding-top: .625rem;
+            }
+        }
         .banner-shadow {
             background: linear-gradient(359.98deg, #181B23 14.72%, rgba(24, 27, 35, 0.57) 55.54%, rgba(24, 27, 35, 0) 92.63%);
             width: 100%;

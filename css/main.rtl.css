@@ -186,6 +186,25 @@ html {
     object-fit: contain;
   }
 }
+.main .banner .banner-circle {
+  background-image: url("../img/banner-circle.svg");
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.main .banner .banner-circle .banner-value {
+  font-weight: bold;
+  font-size: 0.625rem;
+  color: #FFFFFF;
+  padding-top: 0.625rem;
+}
 .main .banner .banner-shadow {
   background: linear-gradient(-359.98deg, #181B23 14.72%, rgba(24, 27, 35, 0.57) 55.54%, rgba(24, 27, 35, 0) 92.63%);
   width: 100%;

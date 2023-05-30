@@ -25,18 +25,14 @@ $font-icons-family-name: "IconsFont";
 	@include icon-styles;
 }
 
-$icon-name-minus: "\E001"; 
-$icon-name-plus: "\E002"; 
+$icon-name-plus: "\E001"; 
 
 
 @function icon-char($filename) {
 	$char: "";
 
-	@if $filename == minus {
-		$char: "\E001";
-	}
 	@if $filename == plus {
-		$char: "\E002";
+		$char: "\E001";
 	}
 
 	@return $char;
@@ -53,9 +49,6 @@ $icon-name-plus: "\E002";
 	}
 }
 
-.icon-minus {
-	@include icon(minus);
-}
 .icon-plus {
 	@include icon(plus);
 }

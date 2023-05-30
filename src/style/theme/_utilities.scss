@@ -1,10 +1,16 @@
+body {
+    background-color: $black;
+    margin: 0;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
 a {
     text-decoration: underline;
     cursor: pointer;
-}
-
-.container-fluid {
-    padding: 0;
 }
 
 .text-white {
@@ -15,20 +21,12 @@ a {
     color: $green;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .fw-bold {
     font-weight: bold;
-}
-
-.d-flex {
-    display: flex;
-}
-
-.justify-content-center {
-    justify-content: center;
-}
-
-.align-items-center {
-    align-items: center;
 }
 
 .px-4 {
